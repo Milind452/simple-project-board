@@ -30,17 +30,30 @@ export default function Board() {
         setTasks(data);
     }, [data]);
 
+    function onDrop(e, laneId) {
+        const id = e.dataTransfer.getData("id");
+        const updatedTasks = tasks.filter((task) => {
+            if (task.id.toString() === id) {
+                task.lane = laneId;
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+    }
+
     return (
         <div className="Board-wrapper">
             {lanes.map((lane) => (
                 <Lane
                     key={lane.id}
+                    laneId={lane.id}
                     title={lane.title}
                     loading={loading}
                     error={error}
                     tasks={tasks.filter((task) => task.lane === lane.id)}
                     onDragStart={onDragStart}
                     onDragOver={onDragOver}
+                    onDrop={onDrop}
                 />
             ))}
         </div>
