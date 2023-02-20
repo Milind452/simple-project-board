@@ -1,6 +1,26 @@
-import "./Lane.css";
+import styled from "styled-components";
 
 import Task from "../Task/Task";
+
+const LaneWrapper = styled.div`
+    text-align: left;
+    padding: 0;
+    background-color: lightgray;
+    border-radius: 20px;
+    width: 20vw;
+    min-height: 50vh;
+
+    @media (max-width: 768px) {
+        margin-bottom: 5%;
+    }
+`;
+
+const Title = styled.h2`
+    width: 100%;
+    padding-bottom: 10%;
+    text-align: center;
+    border-bottom: 1px solid darkgray;
+`;
 
 export default function Lane({
     laneId,
@@ -13,12 +33,8 @@ export default function Lane({
     onDrop,
 }) {
     return (
-        <div
-            className="Lane-wrapper"
-            onDragOver={onDragOver}
-            onDrop={(e) => onDrop(e, laneId)}
-        >
-            <h2>{title}</h2>
+        <LaneWrapper onDragOver={onDragOver} onDrop={(e) => onDrop(e, laneId)}>
+            <Title>{title}</Title>
             {loading || error ? (
                 <span>{error || "loading..."}</span>
             ) : (
@@ -32,6 +48,6 @@ export default function Lane({
                     />
                 ))
             )}
-        </div>
+        </LaneWrapper>
     );
 }
