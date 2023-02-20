@@ -2,6 +2,7 @@ import "./Board.css";
 
 import Lane from "../../components/Lane/Lane";
 import useFetch from "../../hooks/useFetch";
+import { useEffect, useState } from "react";
 
 const lanes = [
     { id: 1, title: "To Do" },
@@ -19,9 +20,15 @@ function onDragOver(e) {
 }
 
 export default function Board() {
-    const [loading, error, tasks] = useFetch(
+    const [loading, error, data] = useFetch(
         "https://my-json-server.typicode.com/PacktPublishing/React-Projects-Second-Edition/tasks"
     );
+
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        setTasks(data);
+    }, [data]);
 
     return (
         <div className="Board-wrapper">
