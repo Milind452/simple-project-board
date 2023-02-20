@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header/Header";
+import Backlog from "./pages/Backlog/Backlog";
 import Board from "./pages/Board/Board";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
         <div className="App">
             <Header />
             <Board />
+            <Backlog />
         </div>
     );
 }
