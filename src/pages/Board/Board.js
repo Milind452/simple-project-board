@@ -1,5 +1,7 @@
 import "./Board.css";
 
+import Lane from "../../components/Lane/Lane";
+
 export default function Board() {
     const lanes = [
         { id: 1, title: "To Do" },
@@ -11,7 +13,7 @@ export default function Board() {
     return (
         <div className="Board-wrapper">
             {lanes.map((lane) => (
-                <div key={lane.id}>{lane.title}</div>
+                <Lane key={lane.id} title={lane.title} />
             ))}
         </div>
     );
