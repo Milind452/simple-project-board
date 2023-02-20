@@ -2,9 +2,9 @@ import "./Lane.css";
 
 import Task from "../Task/Task";
 
-export default function Lane({ title, loading, error, tasks, onDragStart }) {
+export default function Lane({ title, loading, error, tasks, onDragStart, onDragOver }) {
     return (
-        <div className="Lane-wrapper">
+        <div className="Lane-wrapper" onDragOver={onDragOver}>
             <h2>{title}</h2>
             {loading || error ? (
                 <span>{error || "loading..."}</span>
