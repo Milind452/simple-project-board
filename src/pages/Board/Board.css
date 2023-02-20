@@ -1,0 +1,10 @@
+.Board-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5%;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
